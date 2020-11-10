@@ -9,7 +9,7 @@ body{
     color: #fff;
 }
 section{
-    width: 30%;
+    /* width: 30%; */
     height: auto;
     margin: 0 auto;
     margin-top: 5rem;
@@ -57,4 +57,18 @@ input[type=text]{
 .btn-2{
     background-color: #EFEFEF;
     color: #181719;
+}
+
+
+@media only screen and (min-width: 768px){
+    section{
+        width: 80%;
+    }
+}
+
+
+@media only screen and (min-width: 1280px){
+    section{
+        width: 30%;
+    }
 }
