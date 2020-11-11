@@ -3,11 +3,12 @@ self.addEventListener('install', e => {
 
     let CACHE_NAME = 'static';
     let urlsToCache = [
-        '/', 
+        './', 
         './index.html', 
         './style.css',
-         './android-chrome-512x512.png',
-         './andriod-chrome-192x192.png'
+        './android-chrome-512x512.png',
+        './andriod-chrome-192x192.png',
+        './main.js'
     ]
 
    e.waitUntil(
