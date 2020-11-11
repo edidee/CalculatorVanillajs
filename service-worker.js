@@ -1,21 +1,36 @@
 // installation
-self.addEventListener('install', e => {
+let CACHE_NAME = 'static';
+let urlsToCache = [
+    '/', 
+    'index.html', 
+    'style.css',
+    'android-chrome-512x512.png',
+    'andriod-chrome-192x192.png',
+    'main.js'
+]
 
-    let CACHE_NAME = 'static';
-    let urlsToCache = [
-        './', 
-        './index.html', 
-        './style.css',
-        './android-chrome-512x512.png',
-        './andriod-chrome-192x192.png',
-        './main.js'
-    ]
+// add cache flies on installation
+self.addEventListener('install', event => {
+    console.log('Service worker installing...');
+    self.skipWaiting();
 
-   e.waitUntil(
-       caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)
-       )
-   );
-});
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(cache => {
+                return cache.addAll(urlsToCache);
+                console.log('installing');
+            })
+            .catch(e => console.log(e))
+    );
+})
+// self.addEventListener('install', e => {
+
+
+//    e.waitUntil(
+//        caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)
+//        )
+//    );
+// });
 
 // Activation
 self.addEventListener('activate', e => {
@@ -35,11 +50,9 @@ self.addEventListener('activate', e => {
 })
 
 self.addEventListener('activate', (e) => {
+    console.log('activating...');
     self.skipWaiting()
 })
-
-
-
 
 
 // fetch
